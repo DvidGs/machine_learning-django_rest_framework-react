@@ -28,13 +28,13 @@ ALLOWED_HOSTS = [
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
-    'https://solopython.com'
+    'https://solopython.com',
 ]
 
 #CSRF_COOKIE_DOMAIN = "solopython.com"
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
-    'https://solopython.com'
+    'https://solopython.com',
 ]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -53,7 +53,10 @@ DJANDO_APPS = [
 ]
 
 PROJECT_APPS = [
-
+    'apps.user',
+    'apps.blog',
+    'apps.category',
+    'apps.ml',
 ]
 
 THIRD_PARTY_APPS = [
@@ -61,6 +64,7 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'ckeditor',
     'ckeditor_uploader',
+    'import_export',
 ]
 
 INSTALLED_APPS = DJANDO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
@@ -76,7 +80,7 @@ CKEDITOR_UPLOAD_PATH = "/media/"
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.whiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -186,7 +190,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-FILE_UPLOAD_PERMISSIONS = 0O640
+FILE_UPLOAD_PERMISSIONS = 0o640
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
